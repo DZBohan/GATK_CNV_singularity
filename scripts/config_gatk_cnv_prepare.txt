@@ -1,0 +1,9 @@
+output_path="/path/to/output/directory"
+
+bed="/path/to/file_edit.bed"
+
+refer="/path/to/reference.fa"
+
+home="/path/to/home/directory"
+
+
