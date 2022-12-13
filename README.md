@@ -173,7 +173,7 @@ Let us first view an edited bed file. It is OK if a bed file has some additional
 
 Two places in the bed file may need to be edited. 
 
-First, The original bed file has several rows of headers. In the main part of a bed file, several lines are not located on chromosomes 1-22 or x and y. 
+First, the original bed file has several rows of headers. In the main part of a bed file, several lines are not located on chromosomes 1-22 or x and y. 
 
 Therefore, you need to use the following commands to remove both the header and the lines not on normal chromosomes. 
 
@@ -302,7 +302,7 @@ Now, you should have two new files, `targets.preprocessed.interval_list` and `an
 
 ### <h2 id="5.2">5.2 CNV analysis step</h2>
 
-You can do the main step with the two newly generated intermedia files. This step contains a Slurm script `gatk_cnv.slurm`, a config file `config_gatk_cnv.txt`, and a Python script `CNV_annotation_script.py`.
+You can do the main step with the two newly generated intermedia files. This step contains a Slurm script `gatk_cnv.slurm`, a config file `config_gatk_cnv.txt`.
 
 Same as the preparation step, if you already had the GATK singularity image file `gatk.sif` in the scripts directory, you do not need to pull it again.
 
@@ -372,8 +372,7 @@ Here is an example of the GATK pipeline CNV plots.
 
 You can finally get two plots from running the GATK pipeline on a set of tumor & normal samples. The x-axis of both plots shows the different segments on different chromosomes. The y-axis of the first plot is `denoised copy ratio`. The y-axis of the second plot is `alternate allele fraction`.
 
-For the color, the official webpage explained this. "Different copy ratio segments are indicated by alternating blue and orange color groups.
-The denoised median is drawn in thick black."
+For the color, the official webpage explained this. "Different copy ratio segments are indicated by alternating blue and orange color groups. The denoised median is drawn in thick black."
 
 ### <h2 id="6.2">6.2 CNV result tables</h2>
 
@@ -389,7 +388,7 @@ tumor_bam_filename.af.igv.seg
 
 The first two tables are the initial and final log2 copy ratio results before and after the segmentation step. Both have the log2 copy ratio results at different positions, 10, 50, and 90, so getting final readable results for these two files is tricky.
 
-`tumor_bam_filename.cr.seg` and `tumor_bam_filename.cr.igv.seg` essentially include the same data，segments' position information, number of the probs, and the mean value of log2 copy ratio. However, the latter is more arrangeable and perfect being used for annotation. `tumor_bam_filename.af.igv.seg` has same format as `tumor_bam_filename.cr.igv.seg`, and the only difference is that the log2 copy ratio in the last column is replaced with the allele fraction.
+`tumor_bam_filename.cr.seg` and `tumor_bam_filename.cr.igv.seg` essentially include the same data, segments' position information, number of the probs, and the mean value of log2 copy ratio. However, the latter is more arrangeable and perfect being used for annotation. `tumor_bam_filename.af.igv.seg` has same format as `tumor_bam_filename.cr.igv.seg`, and the only difference is that the log2 copy ratio in the last column is replaced with the allele fraction.
 
 Therefore, `tumor_bam_filename.cr.igv.seg` and `tumor_bam_filename.af.igv.seg` are the two more informative results. Here are the first ten rows of these two tables.
 
